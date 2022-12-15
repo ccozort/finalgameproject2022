@@ -3,29 +3,36 @@ from sys import exit
 import random
 from random import randint
 from pygame import mixer
-
+import os
 pygame.init()
+
+score = 0
+
+# setup asset folders here - images sounds etc.
+game_folder = os.path.dirname(__file__)
+# img_folder = os.path.join(game_folder, 'images')
 
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode((1000,550))
-bg = pygame.image.load('space.png')
+# os.path.join(img_folder, 'theBell.png')).convert()
+bg = pygame.image.load(os.path.join(game_folder, 'space.png')).convert()
 screen.blit(bg,(0,0))
 
-ship = pygame.image.load('tiny_ship.png')
+ship = pygame.image.load(os.path.join(game_folder, 'tiny_ship.png')).convert()
 ship_rect = ship.get_rect()
 
 ship_y_pos = 225
 ship_x_pos = 140
 
-rock = pygame.image.load('rock.png')
-rock1 = pygame.image.load('rock.png')
-rock2 = pygame.image.load('rock.png')
-rock3 = pygame.image.load('rock.png')
-rock4 = pygame.image.load('rock.png')
+rock = pygame.image.load(os.path.join(game_folder, 'rock.png')).convert()
+rock1 = pygame.image.load(os.path.join(game_folder, 'rock.png')).convert()
+rock2 = pygame.image.load(os.path.join(game_folder, 'rock.png')).convert()
+rock3 = pygame.image.load(os.path.join(game_folder, 'rock.png')).convert()
+rock4 = pygame.image.load(os.path.join(game_folder, 'rock.png')).convert()
 
 
 
-bullet = pygame.image.load('bullet.png')
+bullet = pygame.image.load(os.path.join(game_folder, 'bullet.png')).convert()
 bullet_x_pos = ship_x_pos
 
 rock_x_pos = 1000
@@ -34,25 +41,20 @@ rock_x_pos2 = 1000
 rock_x_pos3 = 1000
 rock_x_pos4 = 1000
 
-
-
-
-
-
 text_x = 250
 text_y = -140
 
-spaceshooter = pygame.image.load('Space Shooter.png')
+spaceshooter = pygame.image.load(os.path.join(game_folder, 'Space Shooter.png')).convert()
 screen.blit(spaceshooter,(text_x, text_y))
 
 
 
 
-start = pygame.image.load('Start.png')
+start = pygame.image.load(os.path.join(game_folder, 'Start.png')).convert()
 screen.blit(start,(250,45))
 
 #music
-mixer.music.load('csm.wav')
+mixer.music.load(os.path.join(game_folder, 'csm.wav'))
 mixer.music.play(-1)
 pygame.mixer.music.play()
 
@@ -116,18 +118,18 @@ while True:
             
 
         score_value = 0
-        font = pygame.font.Font('8-BIT WONDER.TTF',32)
+        # font = pygame.font.Font(os.path.join('8-BIT WONDER.TTF'),32)
 
         score_x = 740
         score_y = 10
 
 
 
-        def show_score(x, y):
-            score = font.render("Score :" + str(score_value), True, (225, 255, 255))
-            screen.blit(score, (x, y))
+        # def show_score(x, y):
+        #     # score = font.render("Score :" + str(score_value), True, (225, 255, 255))
+        #     screen.blit(score, (x, y))
 
-        show_score(score_x, score_y)
+        # show_score(score_x, score_y)
 
             
         break
